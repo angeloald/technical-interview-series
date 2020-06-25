@@ -1,8 +1,8 @@
 # Stacks and Queues
 
-## 1. Valid Parentheses
+### 1. Valid Parentheses
 
-### Problem
+#### Problem
 
 Given a string containing just the characters `'('`, `')'`, `'{'`, `'}'`, `'['` and `']'`, determine if the input string is valid.
 
@@ -13,13 +13,13 @@ An input string is valid if:
 
 Note that an empty string is also considered valid.
 
-### How we'll solve it
+#### How we'll solve it
 
 1. We return `False`  if the string has an odd number of elements because it is not able to form a a palindrome with the given characters.
 2. We just append characters into the stack, but we pop them if they should be popped. We can pop a character if they are symmetrical to the incoming character. 
 3. Once we consume all the characters in the input string, we check if the stack is empty. An empty stack means our string was a palindrome.
 
-### Solution
+#### Solution
 
 ```python
 class Solution(object):
@@ -53,7 +53,7 @@ class Solution(object):
 
 ## 2. Min Stack
 
-### Problem
+#### Problem
 
 Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
 
@@ -62,11 +62,11 @@ Design a stack that supports push, pop, top, and retrieving the minimum element 
 * top\(\) -- Get the top element.
 * getMin\(\) -- Retrieve the minimum element in the stack.
 
-### How we'll solve it
+#### How we'll solve it
 
 We can just create a regular stack that keeps track of the minimum element in an auxiliary stack. We just push and pop to the auxiliary stack based on the value of its top element \(which we define as the minimum element of the main stack\).
 
-### Solution
+#### Solution
 
 ```python
 class MinStack(object):
