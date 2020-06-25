@@ -51,5 +51,64 @@ class Solution(object):
         return 0 == len(stack)
 ```
 
+## 2. Min Stack
 
+#### Problem
+
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+* push\(x\) -- Push element x onto stack.
+* pop\(\) -- Removes the element on top of the stack.
+* top\(\) -- Get the top element.
+* getMin\(\) -- Retrieve the minimum element in the stack.
+
+#### How we'll solve it
+
+We can just create a regular stack that keeps track of the minimum element in an auxiliary stack. We just push and pop to the auxiliary stack based on the value of its top element \(which we define as the minimum element of the main stack\).
+
+#### Solution
+
+```python
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.min_stack = []
+        self.stack = []
+        
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: None
+        """
+        if not self.stack or x <= self.min_stack[-1]:
+            self.min_stack.append(x)
+        
+        self.stack.append(x)
+        
+
+    def pop(self):
+        """
+        :rtype: None
+        """
+        top = self.stack.pop()
+        if top == self.min_stack[-1]:
+            self.min_stack.pop()
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.stack[-1]
+        
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        return self.min_stack[-1]
+```
 
