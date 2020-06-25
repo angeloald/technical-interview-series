@@ -1,18 +1,18 @@
 # Linked Lists and Cycles
 
-### 1. Linked List Cycle I
+## 1. Linked List Cycle I
 
-#### Problem
+### Problem
 
 Given a linked list, determine if it has a cycle in it.
 
 To represent a cycle in the given linked list, we use an integer `pos` which represents the position \(0-indexed\) in the linked list where tail connects to. If `pos` is `-1`, then there is no cycle in the linked list.
 
-#### How we'll solve it
+### How we'll solve it
 
 This is cycle detection in its purest form. We just need to keep track of two pointers that traverse the linked list at different speeds. If the linked list has a cycle, the two pointers will eventually collide. If there is no cycle, the faster pointer will reach the end of the linked list and the program terminates.
 
-#### Solution
+### Solution
 
 ```python
 class Solution:
@@ -30,15 +30,15 @@ class Solution:
         return False
 ```
 
-### 2. Linked List Cycle II
+## 2. Linked List Cycle II
 
-#### Problem
+### Problem
 
 Given a linked list, return the node where the cycle begins. If there is no cycle, return `null`.
 
 To represent a cycle in the given linked list, we use an integer `pos` which represents the position \(0-indexed\) in the linked list where tail connects to. If `pos` is `-1`, then there is no cycle in the linked list.
 
-#### How we'll solve it
+### How we'll solve it
 
 This is essentially going to use the same trick we used in the first cycle detection question. However, we need to find out where the cycle begins.
 
@@ -47,7 +47,7 @@ This is essentially going to use the same trick we used in the first cycle detec
 3. Move both pointers forward one step at a time until they collide with each other.
 4. Where they collide is where the cycle  begins. The proof for this involves some math, but you can verify that yourself \(hint: think about divisibility and some modular arithmetic, or just draw it on a piece of paper\).  
 
-#### Solution
+### Solution
 
 ```python
 class Solution:
@@ -77,19 +77,19 @@ class Solution:
         return None
 ```
 
-### 3. Middle of the Linked List
+## 3. Middle of the Linked List
 
-#### Problem
+### Problem
 
 Given a non-empty, singly linked list with head node `head`, return a middle node of linked list.
 
 If there are two middle nodes, return the second middle node.
 
-#### How we'll solve it
+### How we'll solve it
 
 We just need to have two pointers where one pointer moves a step at a time while the other pointer moves at twice the speed. The middle is reached by the slower pointer when the faster pointer reaches the end of the list.
 
-#### Solution 
+### Solution 
 
 ```python
 class Solution:
@@ -104,18 +104,18 @@ class Solution:
         return p1
 ```
 
-### 4. Remove Nth Node From End of List
+## 4. Remove Nth Node From End of List
 
-#### Problem
+### Problem
 
 Given a linked list, remove the _n_-th node from the end of list and return its head.
 
-#### How we'll solve it
+### How we'll solve it
 
 1. We need to traverse the list once so we can identify its length.
 2. Once we figure out how long the list is, we just traverse it again up to the `length - nth_node_from_end_of_the_list`
 
-#### Solution
+### Solution
 
 ```python
 class Solution:
