@@ -8,4 +8,5 @@
 * [Arrays and Strings](arrays-and-strings/README.md)
   * [Sliding Window](arrays-and-strings/sliding-window.md)
 * [Heaps and Sorting](heaps-and-sorting.md)
+* [Trees](trees.md)
 
