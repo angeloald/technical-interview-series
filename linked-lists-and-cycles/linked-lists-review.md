@@ -8,19 +8,13 @@ A linked list is a set of nodes that contain some data and references to other n
 
 This is a linked list that lets you access all nodes by giving you access to the head node. You can find elements by traversing through the nodes, and you can add elements by reassigning the new element as the new head that points to the previous head. You can delete elements by traversing through the nodes and connecting the preceding node to the subsequent node.
 
-![https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html](../.gitbook/assets/image%20%281%29.png)
-
 It's easy to see that a singly-linked list can be used to implement a stack. You push items in and you pop them out the same way you'd add items into a linked list and remove items by controlling the head \(which acts as the top of the stack\).
 
 Also, you can implement a queue by adding a reference to the tail of the singly-linked list. Enqueueing an element affects the tail node while dequeueing an element affects the head node.
 
-![https://www.cs.grinnell.edu/~walker/courses/195.fa01/lab.queues.html](../.gitbook/assets/image%20%283%29.png)
-
 ### Doubly-linked list
 
 This is almost like a singly-linked list, but its nodes can reference the two nodes adjacent to them. A doubly linked list adds more utility, at the cost of more memory to manage extra pointers, by giving you bidirectional traversal capabilities.
-
-![https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html](../.gitbook/assets/image%20%282%29.png)
 
 You can notice that a deque can be implemented as a doubly-linked list with an added reference to the tail node.
 

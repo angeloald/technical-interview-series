@@ -1,6 +1,7 @@
 # Table of contents
 
 * [Technical Interview Series](README.md)
+* [Data structures and algorithms](data-structures-and-algorithms.md)
 * [Stacks and Queues](stacks-and-queues/README.md)
   * [Stacks and Queues Review](stacks-and-queues/stacks-and-queues-review.md)
 * [Linked Lists and Cycles](linked-lists-and-cycles/README.md)
