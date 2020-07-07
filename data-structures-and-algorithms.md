@@ -4,7 +4,7 @@
 
 ### Dictionary
 
-You can add keys in to a dictionary \(or hash map\) and get or modify the values of the keys you added. The basic idea is that your dictionary converts your key into an index then it sends you to the index where your key's value lives. In other words, a dictionary stores everything in a contiguous array and let's you access its indices by hashing your input keys. 
+You can add keys in to a dictionary \(or hash map\) and get or modify the values of the keys you added. The basic idea is that your dictionary converts your key into an index then it sends you to the index where your key's value lives. In other words, a dictionary stores everything in a contiguous array and let's you access its indices by hashing your input keys. z
 
 ```text
 a dictionary is basically used like this
@@ -72,11 +72,29 @@ I read the source code of Python and found out that they use a variation of line
 ```text
 randomized linear probing in Python (note: dictionary resizes if it is 2/3 full) 
 
-[0, 0, 0, 0, 0, 0, 0, ("cat", "meows")]
+[
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  ("cat", "meows")
+]
+
 insert ("dog", "barks") which collides at index 7 so hash again (assume we get 4)
-[0, 0, 0, 0, ("dog", "barks"), 0, 0, ("cat", "meows")]
-insert ("tortoise", "beats the hare") which collides at index 7 so hash again (1)
-[("tortoise", "beats the hare"), 0, 0, ("dog", "barks"), 0, 0, ("cat", "meows")]
+insert ("tortoise", "beats the hare") which collides at index 7 so hash again (0)
+
+[
+  ("tortoise", "beats the hare"),
+  0,
+  0,
+  0
+  ("dog", "barks"),
+  0,
+  ("cat", "meows")
+]
 
 The subsequent hash will use the key and the current index derived from first hash
 This is literally what you will find in the Python source code
