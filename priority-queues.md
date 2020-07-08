@@ -1,67 +1,6 @@
-# Heaps and Sorting
+# Priority Queues
 
-### 1. Merge Two Sorted Lists
-
-### Problem
-
-Merge two sorted linked lists.
-
-### How we'll solve it
-
-This is literally the same thing as the merge part of merge sort.
-
-### Solution
-
-```python
-# Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
-
-class Solution:
-    def mergeTwoLists(self, h1: ListNode, h2: ListNode) -> ListNode:
-        
-        # return early for special cases
-        if h1 == None and h2 == None:
-            return None
-        if h1 == None:
-            return h2
-        if h2 == None:
-            return h1
-        
-        # this is the merge part
-        head = t1 = t2 = None
-        if h1.val <= h2.val:
-            head = h1
-            t1 = h1.next
-            t2 = h2
-        else:
-            head = h2
-            t1 = h1
-            t2 = h2.next
-        
-        # merge one by one
-        temp = head
-        while t1 != None and t2 != None:
-            if t1.val <= t2.val:
-                temp.next = t1
-                t1 = t1.next
-            else:
-                temp.next = t2
-                t2 = t2.next              
-            temp = temp.next
-
-        # append if one list is consumed
-        if t2 == None:
-            temp.next = t1
-        else:
-            temp.next = t2
-
-        return head
-```
-
-## 2. Kth Largest Element in an Array
+## 1. Kth Largest Element in an Array
 
 ### Problem
 
@@ -86,7 +25,7 @@ class Solution:
         return nums[0]
 ```
 
-## 3. Merge k Sorted Lists
+## 2. Merge k Sorted Lists
 
 ### Problem
 

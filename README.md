@@ -2,11 +2,11 @@
 
 ## Contents
 
-1. Data structures and algorithms review
-2. Cycle detection
-3. Sliding window
-4. Priority queues
-5. Trees
+1. [Data structures and algorithms review](data-structures-and-algorithms.md)
+2. [Cycle detection](cycle-detection.md)
+3. [Sliding window technique](sliding-window-technique/)
+4. [Priority queues](priority-queues.md)
+5. [Trees](trees.md)
 6. Graphs
 7. Dynamic programming
 8. Systems design

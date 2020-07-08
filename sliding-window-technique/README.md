@@ -1,4 +1,4 @@
-# Sliding Window
+# Sliding Window Technique
 
 I think this discussion on sliding windows is the most valuable part of this book because interviewers tend to like asking questions where you need to use this technique. This technique is a game changer because it is rarely taught in schools despite being used so often in the hiring process. If you really want the get the most value for the least amount of time, just read this discussion.
 

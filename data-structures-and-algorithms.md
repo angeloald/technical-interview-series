@@ -110,6 +110,12 @@ use j % 2**i as the next table index;
 
 Stacks and queues are simple data structures that act as containers for elements. The only difference between them is that in a stack, what you put in last is the one you take out first, while in a queue, the one you put in first is the one you take out first.
 
+Queues become more interesting when you start working with distributed systems because they are used all the time as message queues. A message queue accepts information from some component while allowing another component to process information in the order they got added.
+
+![https://aws.amazon.com/blogs/compute/building-scalable-applications-and-microservices-adding-messaging-to-your-toolbox/](.gitbook/assets/image.png)
+
+#### Deques
+
 Sometimes we use a deque \(double ended queue\) to represent a container that can act as a queue and a stack in both directions. In the real world, you wouldn't want to overuse deques because your coworkers could misuse your deque as a stack even though you're using the deque as a queue. In other words, use a stack for stack-based containers, a queue for queue-based containers, and a deque if you really need both.
 
 {% hint style="info" %}

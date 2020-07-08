@@ -1,4 +1,4 @@
-# Linked Lists and Cycles
+# Cycle Detection
 
 ## 1. Linked List Cycle I
 
