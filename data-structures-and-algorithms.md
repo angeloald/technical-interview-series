@@ -171,23 +171,139 @@ The following is just a compressed tree, but[ people sometimes refer to it as a 
 
 ### Binary search tree
 
+A binary search tree is just a binary tree, a tree where each node can have up to two children nodes, with the following properties:
 
+* the node's left child has a smaller value than the node
+* the node's right child has a greater value than the node
+
+Searching for an element in an unbalanced binary search tree would take more time than in a balanced one. This is because an unbalanced tree could literally look like linked list where each node only has a single child. This might happen if you insert values into a binary search tree in increasing order.
+
+![https://www.cpp.edu/~ftang/courses/CS241/notes/self%20balance%20bst.htm](.gitbook/assets/binary_tree.jpg)
 
 ### Graph
+
+A graph is a set of vertices connected by edges. The following image illustrates what a vertex is and what an edge is:   
+
+![http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/11-Graph/intro.html](.gitbook/assets/vertex_edge.gif)
+
+Usually graphs are described by their properties, so here's a few of them:
+
+#### Directed vs undirected
+
+* In a directed graph, X \(the origin vertex\) can connect to a Y \(destination vertex\), but Y does not necessarily have to connect to X. However, X being connected to Y and Y being connected to X is a still a valid directed graph.
+* An undirected graph is just a directed graph where each connection is symmetric; that is if any vertex A connects to vertex Y, vertex Y must connect to vertex X
+
+
+
+![https://blogs.cornell.edu/info2040/2015/10/18/the-networks-of-venmo/](.gitbook/assets/directed_vs_undirected_graph.png)
+
+#### Cyclic vs acyclic
+
+* A graph is cyclic if some vertex can return to itself after walking \(traversing one vertex at a time without backtracking\) a path of with at least 2 more vertices. This means that all cycles form polygons with the simplest cycle forming a triangle. An undirected graph of two vertices is not a cycle. A cycle is found when we can walk from X to Y to Z then to X again, but walking from X to Y to Z to Y to X is not a valid cycle because we backtracked.
+* You can represent your required college courses as an acyclic graph because your courses do not require you to retake their prerequisites.
+
+#### Weighted vs unweighted
+
+* A graph is weighted if its edges have some sort of value. The value could represent things like the distance between two cities, the time it takes to travel between two airports, and so on.
 
 ## Sorting Algorithms
 
 ### Selection sort vs insertion sort
 
+* In selection sort, you start by looking for the smallest element in the unsorted array then replacing the element at its first index with the smallest element. The first index is now your sorted subarray and the rest is an unsorted subarray. You gradually sort your array by continuously replacing the element at  the unsorted subarray's first index with its smallest element.
+* In insertion sort, you just shift elements to the right if they are larger than your current element.You do this until you sort the entire array.
+* If comparisons are cheaper, use selection sort because insertion sort might be too expensive if each element in your unsorted array is a few megabytes or more in size. Insertion sort copies elements whenever you shift elements in the array. Otherwise, always use insertion sort because it is usually faster especially for arrays that are almost sorted.
+
 ### Merge sort
 
+My friend got interviewed for a Google position and they asked him to implement merge sort during a telephone interview. The idea of merge sort is you keep dividing an array over and over until you get a subarray for each element in the original array. You combine these one-element subarrays into sorted two-element subarrays, then into sorted four-element subarrays, and so on until all of your subarrays are sorted.
+
+![https://www.cs.colostate.edu/~cs161/Fall16/recitations/recit14/](.gitbook/assets/merge_sort%20%281%29.svg)
+
 ### Quick sort
+
+Quick sort is like merge sort but it partitions the array rather than dividing it in half. You basically choose a pivot element and place smaller elements to the left side of it and larger elements to the right. Perform the same operations for the subarrays of smaller elements and larger elements until you only get sorted subarrays. After that, merge the subarrays together and your array is now sorted.
+
+![https://cs.brown.edu/courses/csci0111/bridge-to18/sorting-lists.html](.gitbook/assets/quick_sort.png)
+
+{% hint style="info" %}
+####  Hybrid sorting algorithms
+
+Timsort is Python's implementation for its built-in list `sort` function. Timsort is a combination of merge sort and insertion sort. It works by dividing the array in half over and over again until it reaches a size where the subarrays can be sorted by insertion sort. Those sorted subarrays are then sorted by the merge part of merge sort afterwards. In Python they reduce the number of comparisons by using a galloping search approach. They basically use a smarter version of binary search to locate insertion points then sort elements in bulk. ****[You can read the source code here if you want.](https://github.com/python/cpython/blob/dd754caf144009f0569dda5053465ba2accb7b4d/Objects/listobject.c)
+{% endhint %}
 
 ## General
 
 ### Time and space complexity
 
+This is usually asked in most technical interviews, so it is good to know how to compute time and space complexity. Here is a list of common time complexities that you should know about:
+
+* O\(1\) - accessing an element in a hash table
+* O\(log\(n\)\) - binary search
+* O\(n\) - iterating over an array
+* O\(n\*log\(n\)\) - merge/quick sort
+* O\(n^2\) - iterating over an array then iterating over its remaining elements \(selection sort\) 
+* O\(2^n\) or O\(c^n\) - iterating over all possible subsets of a set. Imagine trying all combinations of a 10-digit password that only had 1's and 0's. This will take 2^10 comparisons and it will be painfully slow.
+
+Space complexity is just the amount of extra space used when solving a question. This is usually either O\(1\) if you didn't create any array or dictionary while solving your interview question, O\(n\) if you had to create another array, or O\(m\) where m denotes auxiliary space \(like the number of unique words in a paragraph\).  
+
 ### Recursion
+
+A lot of tree/graph-based problems will use recursion. Recursion is just another way of writing functions that return itself multiple times until a base case is reached. Once a base case is reached, the function stops execution.
+
+{% hint style="info" %}
+#### Tail-call optimization
+
+Tail-call optimization is a process of making recursive functions less expensive for the computer. Recursive calls typically create something called a stack frame which it keeps in memory until the entire recursion process ends.
+
+Here's an example of a non-tail-recursive function:
+
+```text
+def factorial(n):
+  if n == 1: return 1
+  return n * factorial(n - 1)
+
+It suspends the recursive calls:
+
+fac_10 = factorial(10)
+
+factorial(10) -> 10 * factorial(9)
+  factorial(9) -> 9 * factorial(8)
+    factorial(8) -> 8 * factorial(7)
+      factorial(7) -> 7 * factorial(6)
+      ...
+      factorial(7) -> 5040
+    factorial(8) -> 40320
+  factorial(9) -> 362880
+factorial(10) -> 3628800
+
+fac_10 is equal to 3628800
+
+If n is large, you will crash from a "stack-overflow exception" error
+```
+
+This one is an example of a tail-recursive function:
+
+```text
+def factorial(n, total=1):
+  if n == 1: return total
+  return factorial(n - 1, n * total)
+  
+Unlike the above, this should just reuse the same stack frame
+
+fac_10 = factorial(10)
+
+factorial(10) -> factorial(9, 10)
+factorial(9, 10) -> factorial(8, 90)
+...
+factorial(2, 1814400) -> factorial(1, 3628800)
+
+```
+
+**Some languages like JavaScript and Python, as of July 2020, do not support tail-call optimization. This means that even if you write the tail-recursive version of a function, it will still run as the non-tail-recursive version and consume multiple stack frames.** 
+
+Therefore, the rule is to not rely too much on recursive functions when coding JavaScript or Python projects. Maybe you can fare better by reducing the number of recursive functions in your codebase.
+{% endhint %}
 
 
 
